@@ -1,4 +1,4 @@
-app.use(express.static('public'));
+//app.use(express.static('public'));
 
 var express = require("express");
 var path = require("path");
