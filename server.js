@@ -10,12 +10,12 @@ function onHttpStart() {
 
 // setup a 'route' to listen on the default url path (http://localhost)
 app.get("/", function(req,res){
-   res.sendfile(views/home.html);
+   res.sendFile(path.join(__dirname,"/views/home.html"));
 });
 
 // setup another route to listen on /about
 app.get("/about", function(req,res){
-   res.sendfile(views/about.htm);
+    res.sendFile(path.join(__dirname,"/views/about.html"));
 });
 
 // i have no clue what this does ..
