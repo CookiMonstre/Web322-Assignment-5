@@ -1,3 +1,5 @@
+app.use(express.static('public'));
+
 var express = require("express");
 var path = require("path");
 var app = express();
@@ -18,10 +20,6 @@ app.get("/", function(req,res){
 app.get("/about", function(req,res){
     res.sendFile(path.join(__dirname,"/views/about.html"));
 });
-
-// i have no clue what this does ..
-//app.use(express.static('public'));
-//--------------------------------
 
 // setup http server to listen on HTTP_PORT
 app.listen(HTTP_PORT, onHttpStart);
