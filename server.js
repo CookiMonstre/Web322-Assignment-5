@@ -1,4 +1,5 @@
 var express = require("express");
+var path = require("path");
 var app = express();
 
 var HTTP_PORT = process.env.PORT || 8080;
@@ -19,7 +20,7 @@ app.get("/about", function(req,res){
 });
 
 // i have no clue what this does ..
-app.use(express.static('public'));
+//app.use(express.static('public'));
 //--------------------------------
 
 // setup http server to listen on HTTP_PORT
