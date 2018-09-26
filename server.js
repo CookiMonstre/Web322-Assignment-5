@@ -2,6 +2,7 @@
 
 var express = require("express");
 var path = require("path");
+var data = require("data-service.js")
 var app = express();
 app.use(express.static('public'));
 
@@ -19,7 +20,11 @@ app.get("/", function(req,res){
 
 // setup another route to listen on /about
 app.get("/about", function(req,res){
-    res.sendFile(path.join(__dirname,"/views/about.html"));
+  res.sendFile(path.join(__dirname,"/views/about.html"));
+});
+
+app.get("/managers", function(req,res){
+  res.send("TODO: get all employees who have isManager==true");
 });
 
 // setup http server to listen on HTTP_PORT
