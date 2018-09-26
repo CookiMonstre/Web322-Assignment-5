@@ -36,7 +36,7 @@ app.get("/departments", function(req,res){
 });
 
 app.use(function(req,res){
-  res.render('404.jade');
+  res.send('ERROR #404 Page Not Found');
 });
 
 // setup http server to listen on HTTP_PORT
