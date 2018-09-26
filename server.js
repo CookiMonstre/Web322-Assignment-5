@@ -23,8 +23,20 @@ app.get("/about", function(req,res){
   res.sendFile(path.join(__dirname,"/views/about.html"));
 });
 
+app.get("/employees", function(req,res){
+  res.send("TODO: get all employees");
+});
+
 app.get("/managers", function(req,res){
   res.send("TODO: get all employees who have isManager==true");
+});
+
+app.get("/departments", function(req,res){
+  res.send("TODO: get all employees who have department==true");
+});
+
+app.use(function(req,res){
+  res.render('404.jade');
 });
 
 // setup http server to listen on HTTP_PORT
