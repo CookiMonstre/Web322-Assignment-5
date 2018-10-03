@@ -36,7 +36,7 @@ app.get("/about", function(req,res){
 app.get("/employees", function(req,res){
 	data.getAllEmployees()
 	.then(function(data){
-		res.send(data);
+		res.json(data);
 	})
 	.catch(function(reason){
     res.send(reason);
