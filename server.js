@@ -46,7 +46,7 @@ app.get("/employees", function(req,res){
 app.get("/managers", function(req,res){
 	data.getManagers()
 	.then(function(data){
-    res.send(data);
+    res.json(data);
 	})
 	.catch(function(reason){
     res.send(reason);
@@ -56,7 +56,7 @@ app.get("/managers", function(req,res){
 app.get("/departments", function(req,res){
 	data.getDepartments()
 	.then(function(data){
-    		res.send(data);
+    		res.json(data);
 	})
 	.catch(function(reason){
         res.send(reason);
