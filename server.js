@@ -12,7 +12,7 @@
 
 var express = require("express");
 var path = require("path");
-var data = require("./data-service")
+var data = require("./data-service.js")
 var app = express();
 app.use(express.static('public'));
 
@@ -34,7 +34,7 @@ app.get("/about", function(req,res){
 });
 
 app.get("/employees", function(req,res){
-  res.send("TODO: get all employees");
+  res.;
 });
 
 app.get("/managers", function(req,res){
@@ -50,4 +50,5 @@ app.use(function(req,res){
 });
 
 // setup http server to listen on HTTP_PORT
+
 app.listen(HTTP_PORT, onHttpStart);
