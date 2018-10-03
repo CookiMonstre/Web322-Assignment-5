@@ -33,16 +33,27 @@ app.get("/about", function(req,res){
   res.sendFile(path.join(__dirname,"/views/about.html"));
 });
 
-app.get("/employees", function(req,res){
-  res.;
+data.getAllEmployees()
+.then(function(data){
+    console.log(data);
+})
+.catch(function(reason){
+    console.log(reason);
+});
+data.getManagers()
+.then(function(data){
+    console.log(data);
+})
+.catch(function(reason){
+    console.log(reason);
 });
 
-app.get("/managers", function(req,res){
-  res.send("TODO: get all employees who have isManager==true");
-});
-
-app.get("/departments", function(req,res){
-  res.send("TODO: get all employees who have department==true");
+data.getDepartments()
+.then(function(data){
+    console.log(data);
+})
+.catch(function(reason){
+    console.log(reason);
 });
 
 app.use(function(req,res){
@@ -50,5 +61,10 @@ app.use(function(req,res){
 });
 
 // setup http server to listen on HTTP_PORT
-
-app.listen(HTTP_PORT, onHttpStart);
+data.initialize()
+.then(function(){
+  app.listen(HTTP_PORT, onHttpStart);
+})
+.catch(function(reason){
+  console.log(reason);
+});

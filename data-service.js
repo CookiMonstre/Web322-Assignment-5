@@ -20,7 +20,7 @@ module.exports.initialize=function(){
     });     
 };
 
-function getAllEmployees(){
+module.exports.getAllEmployees=function(){
     return new Promise(function(resolve, reject){ // place our code inside a "Promise" function
             if(employees.length == 0){
                 reject("no employees");
@@ -32,23 +32,23 @@ function getAllEmployees(){
     });   
 };
 
-function getManager(){
+module.exports.getManagers=function(){
     return new Promise(function(resolve, reject){ // place our code inside a "Promise" function
         if(employees.length == 0){
             reject("no employees");
         }else{
             var myArray = [];
-            for (i = 0; i < employees.length; i++) {
+            for (i = 0; i < employees.length; i++){
                 if(employees[i].isManager = true){
                     myArray.push(employees[i]);
                 }
             }
             resolve(myArray);
-        }   
+        };   
     });   
 };
 
-functionDepartments(){
+module.exports.getDepartments=function(){
     return new Promise(function(resolve, reject){ // place our code inside a "Promise" function
             if(departments.length == 0){
                 reject("no departments");
