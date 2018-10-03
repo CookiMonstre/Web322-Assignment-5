@@ -36,30 +36,30 @@ app.get("/about", function(req,res){
 app.get("/employees", function(req,res){
 	data.getAllEmployees()
 	.then(function(data){
-		console.log(data);
+		res.send(data);
 	})
 	.catch(function(reason){
-    		console.log(reason);
+    res.send(reason);
 	});
 });
 
 app.get("/managers", function(req,res){
 	data.getManagers()
 	.then(function(data){
-    		console.log(data);
+    res.send(data);
 	})
 	.catch(function(reason){
-    		console.log(reason);
+    res.send(reason);
 	});
 });
 
 app.get("/departments", function(req,res){
 	data.getDepartments()
 	.then(function(data){
-    		console.log(data);
+    		res.send(data);
 	})
 	.catch(function(reason){
-    		console.log(reason);
+        res.send(reason);
 	});
 });
 
