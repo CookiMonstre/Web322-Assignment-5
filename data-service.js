@@ -2,7 +2,7 @@ const fs = require('fs');
 
 var employees = [];
 var departments = [];
-var fs = require('fs');
+
 module.exports.initialize=function(){
     return new Promise(function(resolve, reject){ // place our code inside a "Promise" function
     fs.readFile("./data/employees.json", 'utf8',(err, data) => {
