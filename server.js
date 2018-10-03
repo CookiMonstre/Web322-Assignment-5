@@ -33,27 +33,34 @@ app.get("/about", function(req,res){
   res.sendFile(path.join(__dirname,"/views/about.html"));
 });
 
-data.getAllEmployees()
-.then(function(data){
-    console.log(data);
-})
-.catch(function(reason){
-    console.log(reason);
-});
-data.getManagers()
-.then(function(data){
-    console.log(data);
-})
-.catch(function(reason){
-    console.log(reason);
+app.get("/employees", function(req,res){
+	data.getAllEmployees()
+	.then(function(data){
+		console.log(data);
+	})
+	.catch(function(reason){
+    		console.log(reason);
+	});
 });
 
-data.getDepartments()
-.then(function(data){
-    console.log(data);
-})
-.catch(function(reason){
-    console.log(reason);
+app.get("/managers", function(req,res){
+	data.getManagers()
+	.then(function(data){
+    		console.log(data);
+	})
+	.catch(function(reason){
+    		console.log(reason);
+	});
+});
+
+app.get("/departments", function(req,res){
+	data.getDepartments()
+	.then(function(data){
+    		console.log(data);
+	})
+	.catch(function(reason){
+    		console.log(reason);
+	});
 });
 
 app.use(function(req,res){
