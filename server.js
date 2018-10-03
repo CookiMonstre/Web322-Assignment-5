@@ -4,9 +4,9 @@
 * of this assignment has been copied manually or electronically from any other source
 * (including 3rd party web sites) or distributed to other students.
 *
-* Name: Jacob Van Halteren Student ID: 111769170 Date: ________________
+* Name: Jacob Van Halteren Student ID: 111769170 Date: October 3rd 2018
 *
-* Online (Heroku) Link: ________________________________________________________
+* Online (Heroku) Link: https://stark-mountain-28920.herokuapp.com/
 *
 ********************************************************************************/
 
