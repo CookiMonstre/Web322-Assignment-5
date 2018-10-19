@@ -61,15 +61,10 @@ app.get("/images/add", function(req,res){
 
 //Get images
 app.get("/images", function(req,res){
-	var images = fs.readdir("/public/images/uploaded", function(err, items) {
-    	console.log(items);
-
-    	for (var i=0; i<items.length; i++) {
-       	 console.log(items[i]);
-    	}
-		});
-	res.json("images:" + images);
-});
+	fs.readdir("./public/images/uploaded", function(err, data) {
+		res.render('images',{images:data}); 
+	});
+});	
 
 app.get("/employees", function(req,res){
 	data.getAllEmployees()
