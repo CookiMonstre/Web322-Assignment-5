@@ -15,7 +15,6 @@ var path = require("path");
 var data = require("./data-service.js")
 var multer = require("multer")
 var app = express();
-app.use(express.static('public'));
 const fs = require('fs');
 const bodyParser = require("body-parser");
 var HTTP_PORT = process.env.PORT || 8080;
@@ -28,6 +27,9 @@ const storage = multer.diskStorage({
     cb(null, Date.now() + path.extname(file.originalname));
   }
 });
+
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ extended: true }) );
 
 //Upload Variable
 const upload = multer({ storage: storage });
@@ -67,6 +69,10 @@ app.get("/images",(req,res) =>{
 	});
 });
 
+//post employees
+app.post('/employee', function (req, res) {
+  res.send('POST request to homepage');
+});
 app.get("/employees", function(req,res){
 	data.getAllEmployees()
 	.then(function(data){
