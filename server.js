@@ -60,11 +60,11 @@ app.get("/images/add", function(req,res){
 });
 
 //Get images
-app.get("/images", function(req,res){
+app.get("/images", ensureLogin, (req,res) =>{
 	fs.readdir("./public/images/uploaded", function(err, data) {
-		res.render('images',{images:data}); 
+			res.render('images',{images:data}); 
 	});
-});	
+});
 
 app.get("/employees", function(req,res){
 	data.getAllEmployees()
