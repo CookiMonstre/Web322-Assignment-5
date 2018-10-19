@@ -60,8 +60,8 @@ app.get("/images/add", function(req,res){
 });
 
 //Get images
-app.get("/images", (req,res) =>{
-	fs.readdir("./public/images/uploaded", function(err, data) {
+app.get("/images", function(req,res) {
+	fs:readdir("./public/images/uploaded", function(err, data) {
 			res.render('images',{images:data}); 
 	});
 });
