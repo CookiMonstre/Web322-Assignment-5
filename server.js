@@ -13,15 +13,33 @@
 var express = require("express");
 var path = require("path");
 var data = require("./data-service.js")
+var multer = require("multer")
 var app = express();
 app.use(express.static('public'));
 
 var HTTP_PORT = process.env.PORT || 8080;
 
+//Middle Where
+
+const storage = multer.diskStorage({
+  destination: "./public/images/uploaded",
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + path.extname(file.originalname));
+  }
+});
+
+//Upload Variable
+const upload = multer({ storage: storage });
+
 // call this function after the http server starts listening for requests
 function onHttpStart() {
   console.log("Express http server listening on: " + HTTP_PORT);
 }
+
+//Upload route
+app.post("/images/add", upload.single("imageFile"), (req, res) => {
+  res.send("/images");
+});
 
 // setup a 'route' to listen on the default url path (http://localhost)
 app.get("/", function(req,res){
