@@ -61,7 +61,7 @@ app.get("/images/add", function(req,res){
 
 //Get images
 app.get("/images", function(req,res){
-	var images = fs.readdir(path, function(err, items) {
+	var images = fs.readdir("/public/images/uploaded", function(err, items) {
     	console.log(items);
 
     	for (var i=0; i<items.length; i++) {
