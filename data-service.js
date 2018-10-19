@@ -61,6 +61,9 @@ module.exports.addEmployee=function(employeeData){
     return new Promise(function(resolve, reject){ // place our code inside a "Promise" function
             if(employeeData.isManager == NULL){
                 employeeData.isManager = false;
-            }           
+            }
+            employeeData.employeeNum = employees.length + 1;
+            employees.push(employeeData);
+            resolve;         
     });  
 };
