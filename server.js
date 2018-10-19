@@ -9,7 +9,7 @@
 * Online (Heroku) Link: _____
 *
 ********************************************************************************/
-
+const fs = require('fs');
 var express = require("express");
 var path = require("path");
 var data = require("./data-service.js")
@@ -59,13 +59,18 @@ app.get("/images/add", function(req,res){
   res.sendFile(path.join(__dirname,"/views/addImage.html"));
 });
 
+//Get images
+app.get("/images", function(req,res){
+  res.json("images");
+});
+
 app.get("/employees", function(req,res){
 	data.getAllEmployees()
 	.then(function(data){
 		res.json(data);
 	})
 	.catch(function(reason){
-    res.send(reason);
+    res.send("images");
 	});
 });
 
