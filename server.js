@@ -17,6 +17,7 @@ var multer = require("multer")
 var app = express();
 app.use(express.static('public'));
 const fs = require('fs');
+const bodyParser = require("body-parser");
 var HTTP_PORT = process.env.PORT || 8080;
 
 //Middle Where
@@ -60,7 +61,7 @@ app.get("/images/add", function(req,res){
 });
 
 //Get images
-app.get("/images", function(req,res) {
+app.get("/images", ensureLogin, (req,res) =>{
 	fs.readdir("./public/images/uploaded", function(err, data) {
 			res.render('images',{images:data}); 
 	});
