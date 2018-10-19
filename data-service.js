@@ -26,9 +26,7 @@ module.exports.getAllEmployees=function(){
                 reject("no employees");
             }else{
                 resolve(employees);
-            }            
-
-
+            } 
     });   
 };
 
@@ -55,5 +53,14 @@ module.exports.getDepartments=function(){
             }else{
                 resolve(departments);
             }            
+    });  
+};
+
+//add employee
+module.exports.addEmployee=function(employeeData){
+    return new Promise(function(resolve, reject){ // place our code inside a "Promise" function
+            if(employeeData.isManager == NULL){
+                employeeData.isManager = false;
+            }           
     });  
 };

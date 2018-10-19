@@ -71,7 +71,8 @@ app.get("/images",(req,res) =>{
 
 //add employees
 app.post("/employees/add", function (req, res) {
-  data.addEmployee(req.body)
+	data.addEmployee(req.body)
+	res.redirect("/employees")
 });
 
 
