@@ -38,7 +38,7 @@ function onHttpStart() {
 
 //Upload route
 app.post("/images/add", upload.single("imageFile"), (req, res) => {
-  res.send("/images");
+  res.redirect("/images");
 });
 
 // setup a 'route' to listen on the default url path (http://localhost)
