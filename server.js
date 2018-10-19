@@ -9,14 +9,14 @@
 * Online (Heroku) Link: _____
 *
 ********************************************************************************/
-const fs = require('fs');
+
 var express = require("express");
 var path = require("path");
 var data = require("./data-service.js")
 var multer = require("multer")
 var app = express();
 app.use(express.static('public'));
-
+const fs = require('fs');
 var HTTP_PORT = process.env.PORT || 8080;
 
 //Middle Where
