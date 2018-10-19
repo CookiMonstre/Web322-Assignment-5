@@ -60,7 +60,7 @@ app.get("/images/add", function(req,res){
 });
 
 //Get images
-app.get("/images", ensureLogin, (req,res) =>{
+app.get("/images" ,(req,res) =>{
 	fs.readdir("./public/images/uploaded", function(err, data) {
 			res.render('images',{images:data}); 
 	});
