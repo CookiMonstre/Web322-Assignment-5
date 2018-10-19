@@ -69,10 +69,12 @@ app.get("/images",(req,res) =>{
 	});
 });
 
-//post employees
-app.post('/employee', function (req, res) {
-  res.send('POST request to homepage');
+//add employees
+app.post("/employees/add", function (req, res) {
+  data.addEmployee(req.body)
 });
+
+
 app.get("/employees", function(req,res){
 	data.getAllEmployees()
 	.then(function(data){
