@@ -59,7 +59,7 @@ module.exports.getDepartments=function(){
 //add employee
 module.exports.addEmployee=function(employeeData){
     return new Promise(function(resolve, reject){ // place our code inside a "Promise" function
-            if(employeeData.isManager == NULL){
+            if(employeeData.isManager = undefined){
                 employeeData.isManager = false;
             }
             employeeData.employeeNum = employees.length + 1;
