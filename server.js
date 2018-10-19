@@ -61,7 +61,7 @@ app.get("/images/add", function(req,res){
 
 //Get images
 app.get("/images", function(req,res) {
-	fs:readdir("./public/images/uploaded", function(err, data) {
+	fs.readdir("./public/images/uploaded", function(err, data) {
 			res.render('images',{images:data}); 
 	});
 });
