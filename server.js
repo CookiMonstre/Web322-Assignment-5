@@ -61,7 +61,14 @@ app.get("/images/add", function(req,res){
 
 //Get images
 app.get("/images", function(req,res){
-  res.json("images");
+	var images = fs.readdir(path, function(err, items) {
+    	console.log(items);
+
+    	for (var i=0; i<items.length; i++) {
+       	 console.log(items[i]);
+    	}
+		});
+	res.json("images:" + images);
 });
 
 app.get("/employees", function(req,res){
@@ -70,7 +77,7 @@ app.get("/employees", function(req,res){
 		res.json(data);
 	})
 	.catch(function(reason){
-    res.send("images");
+    res.send(reason);
 	});
 });
 
