@@ -86,6 +86,56 @@ app.get("/employees", function(req,res){
 	});
 });
 
+app.get("/employees", (req,res)=>{
+	if (req.query.status){
+			dataservice.getEmployeesByStatus(req.query.status) 
+			.then((data)=>{
+					res.json(data);
+			})
+			.catch(()=>{
+				res.send(reason);
+			})
+	}  
+	else if (req.query.department){
+			dataservice.getEmployeesByDepartment(req.query.department)
+			.then((data)=>{
+				res.json(data);
+			})
+			.catch(()=>{
+				res.send(reason);
+			})
+	}   
+	else if (req.query.manager){
+			dataservice.getEmployeesByManager(req.query.manager)
+			.then((data)=>{
+				res.json(data);
+			})
+			.catch(()=>{
+				res.send(reason);
+			})
+	}
+	else{
+			dataservice.getAllEmployees()
+			.then((data)=>{
+				res.json(data);
+			})
+			.catch(()=>{
+				res.send(reason);
+			});
+	}
+})
+
+app.get("/employee/:num", ensureLogin, (req,res)=>{
+	var num = req.params.num;
+	dataservice.getEmployeeByNum(num)
+	.then((data)=>{
+			res.json(data);
+	})
+	.catch(() => {
+		 res.send(reason);
+	})
+});
+
 app.get("/managers", function(req,res){
 	data.getManagers()
 	.then(function(data){
