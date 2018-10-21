@@ -67,3 +67,71 @@ module.exports.addEmployee=function(employeeData){
             resolve;         
     });  
 };
+
+module.exports.getEmployeesByStatus=function(status){
+    return new Promise(function(resolve, reject){ // place our code inside a "Promise" function
+            if(employees.length == 0){
+                reject("no employees");
+            }else{
+                stuff = []
+                var i
+                for(i = 0; i < employees.length; i++){
+                    if(employees[i].status = status){
+                        stuff.push(employees[i])
+                    }
+                }
+                resolve(stuff);
+            } 
+    });   
+};
+
+module.exports.getEmployeesByDepartment=function(department){
+    return new Promise(function(resolve, reject){ // place our code inside a "Promise" function
+            if(employees.length == 0){
+                reject("no employees");
+            }else{
+                stuff = []
+                var i
+                for(i = 0; i < employees.length; i++){
+                    if(employees[i].department = department){
+                        stuff.push(employees[i])
+                    }
+                }
+                resolve(stuff);
+            } 
+    });   
+};
+
+module.exports.getEmployeesByManager=function(manager){
+    return new Promise(function(resolve, reject){ // place our code inside a "Promise" function
+            if(employees.length == 0){
+                reject("no employees");
+            }else{
+                stuff = []
+                var i
+                for(i = 0; i < employees.length; i++){
+                    if(employees[i].employeeManagerNum = manager){
+                        stuff.push(employees[i])
+                    }
+                }
+                resolve(stuff);
+            } 
+    });   
+};
+
+module.exports.getEmployeeByNum=function(num){
+    return new Promise(function(resolve, reject){ // place our code inside a "Promise" function
+            if(employees.length == 0){
+                reject("no employees");
+            }else{
+                stuff = []
+                var i
+                for(i = 0; i < employees.length; i++){
+                    if(employees[i].employeeNum = num){
+                        stuff.push(employees[i])
+                    }
+                }
+                resolve(stuff);
+            } 
+    });   
+};
