@@ -10,7 +10,8 @@
 * - PLEASE NOTE
 * - Get Employee, Manager, Departments and all sub functions such as
 *   get employee by status work when deploying local host but throws
-*   internal server error on heroku
+*   internal server error on heroku - After updating heroku
+*   to include this message they work GREAT !! :)
 * - ALSO i couldn't get get emplyee by num link to work
 ********************************************************************************/
 
