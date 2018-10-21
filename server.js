@@ -125,6 +125,7 @@ app.get("/employees", (req,res)=>{
 	}
 })
 
+//unable to get working
 app.get("/employee/value", (req,res)=>{
 	var num = req.params.num;
 	dataservice.getEmployeeByNum(num)
