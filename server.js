@@ -4,10 +4,14 @@
 * of this assignment has been copied manually or electronically from any other source
 * (including 3rd party web sites) or distributed to other students.
 *
-* Name: Jacob Van Halteren Student ID: 111769170 Date: October 10th 2018
+* Name: Jacob Van Halteren Student ID: 111769170 Date: October 21th 2018
 *
-* Online (Heroku) Link: _____
-*
+* Online (Heroku) Link: https://stark-mountain-28920.herokuapp.com/
+* - PLEASE NOTE
+* - Get Employee, Manager, Departments and all sub functions such as
+*   get employee by status work when deploying local host but throws
+*   internal server error on heroku
+* - ALSO i couldn't get get emplyee by num link to work
 ********************************************************************************/
 
 var express = require("express");
