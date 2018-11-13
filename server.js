@@ -22,8 +22,29 @@ const bodyParser = require('body-parser');
 const fs = require("fs");
 const multer = require("multer");
 const app = express();
+const exphbs = require('express-handlebars');
 
 const HTTP_PORT = process.env.PORT || 8080;
+
+//USE app.engine
+app.use(bodyParser.urlencoded({ extended: true }));
+app.engine(".hbs", exphbs({
+    extname: ".hbs",
+    defaultLayout: 'layout',
+    helpers: {
+        equal: (lvalue, rvalue, options) => {
+            if (arguments.length < 3)
+                throw new Error("Handlebars Helper equal needs 2 parameters");
+            if (lvalue != rvalue) {
+                return options.inverse(this);
+            } else {
+                return options.fn(this);
+            }
+        }
+    }
+}));
+app.set("view engine", ".hbs");
+//USE app.engine
 
 // multer requires a few options to be setup to store files with file extensions
 // by default it won't store extensions for security reasons
