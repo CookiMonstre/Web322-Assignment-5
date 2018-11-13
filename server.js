@@ -65,6 +65,12 @@ const storage = multer.diskStorage({
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(function(req,res,next){
+	let route = req.baseUrl + req.path;
+	app.locals.activeRoute = (route == "/") ? "/" : route.replace(/\/$/, "");
+	next();
+});
+
 app.engine('.hbs', exphbs({ 
 	extname: '.hbs',
 	helpers: { 
