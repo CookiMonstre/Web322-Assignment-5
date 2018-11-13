@@ -5,7 +5,7 @@
             <!--TO DO MESSAGE -->
             {{#each data}}
                     <tr>
-                        <td>{{{data[this].employeeNum}}}</td>
+                        <td>{{{this.employeeNum}}}</td>
                         <td><a href="/employee/{{employeeNum}}">{{firstName}}&nbsp;{{last_name}}</a></td>
                         <td><a href="mailto:{{email}}">{{email}}</a></td>
                         <td>{{addressStreet}}&nbsp;{{addresCity}}&nbsp;{{addressState}}&nbsp;{{addressPostal}}</td>
