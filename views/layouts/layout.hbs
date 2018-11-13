@@ -1,3 +1,14 @@
+app.engine('.hbs', exphbs({ 
+    extname: '.hbs',
+    helpers: { 
+      navLink: function(url, options){
+	      return '<li' + 
+			  ((url == app.locals.activeRoute) ? ' class="active" ' : '') + 
+			  '><a href="' + url + '">' + options.fn(this) + '</a></li>';
+      }
+    }
+ }));
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,9 +22,3 @@
 {{{body}}}
 </html>
 
-
-navLink: function(url, options){
-	return '<li' + 
-			((url == app.locals.activeRoute) ? ' class="active" ' : '') + 
-			'><a href="' + url + '">' + options.fn(this) + '</a></li>';
-    }
