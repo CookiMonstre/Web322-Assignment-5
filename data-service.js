@@ -145,4 +145,6 @@ module.exports.getDepartments = function(){
     }
     resolve(departments);
    });
+
+
 }

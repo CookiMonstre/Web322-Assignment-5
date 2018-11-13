@@ -72,6 +72,7 @@ app.use(function(req,res,next){
 	next();
 });
 
+
 app.get("/", (req,res) => {
     //res.sendFile(path.join(__dirname, "/views/home.html"));
 		res.render("home");
