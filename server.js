@@ -27,7 +27,6 @@ const exphbs = require('express-handlebars');
 const HTTP_PORT = process.env.PORT || 8080;
 
 //USE app.engine
-app.use(bodyParser.urlencoded({ extended: true }));
 app.engine(".hbs", exphbs({
     extname: ".hbs",
     defaultLayout: "main",
