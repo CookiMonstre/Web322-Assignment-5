@@ -138,12 +138,6 @@ app.get("/employee/:empNum", (req, res) => {
     });
 });
 
-app.get("/managers", (req,res) => {
-    data.getManagers().then((data)=>{
-        res.json(data);
-    });
-});
-
 app.get("/departments", (req,res) => {
     data.getDepartments().then((data)=>{
         res.json(data);
