@@ -72,6 +72,16 @@ app.use(function(req,res,next){
 	next();
 });
 
+app.engine('.hbs', exphbs({ 
+	extname: '.hbs',
+	helpers: { 
+		navLink: function(url, options){
+			return '<li' + 
+			((url == app.locals.activeRoute) ? ' class="active" ' : '') + 
+			'><a href="' + url + '">' + options.fn(this) + '</a></li>';
+		}
+	}
+}));
 
 app.get("/", (req,res) => {
     //res.sendFile(path.join(__dirname, "/views/home.html"));
