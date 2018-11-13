@@ -3,9 +3,9 @@
             <h2>Employees</h2>
             <hr />
             <!--TO DO MESSAGE -->
-            {{#each employee}}
-                    <!--<tr>
-                        <td>{{{employeeNum}}}</td>
+            {{#each data}}
+                    <tr>
+                        <td>{{{data[this].employeeNum}}}</td>
                         <td><a href="/employee/{{employeeNum}}">{{firstName}}&nbsp;{{last_name}}</a></td>
                         <td><a href="mailto:{{email}}">{{email}}</a></td>
                         <td>{{addressStreet}}&nbsp;{{addresCity}}&nbsp;{{addressState}}&nbsp;{{addressPostal}}</td>
@@ -13,8 +13,7 @@
                         <td><a href="/employees?status={{status}}">{{status}}</a></td>
                         <td><a href="/employees?department={{department}}">{{department}}</a></td>
                         <td>{{hireDate}}</td>
-                    </tr>-->
-                    <p>{{firstName}}</p>
+                    </tr>
             {{/each}}           
             
     </div>
