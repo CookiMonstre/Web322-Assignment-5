@@ -148,3 +148,14 @@ module.exports.getDepartments = function(){
 
 
 }
+
+module.exports.updateEmployee = function(employeeData) {
+    return new Promise(function (resolve, reject) {
+        if (employeeData.length == 0) {
+            reject("query returned 0 results");
+        }
+        var tmpSpot = filteredEmployeees.employeeNum.find(employeeData.employeeNum);
+        filteredEmployeees[tmpSpot] = employeeData;
+        resolve();
+    });
+};
