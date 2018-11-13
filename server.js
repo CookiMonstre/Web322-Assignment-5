@@ -140,7 +140,7 @@ app.get("/employee/:empNum", (req, res) => {
 
 app.get("/departments", (req,res) => {
     data.getDepartments().then((data)=>{
-			res.render("employees", {departments: data});
+			res.render("departments", {departments: data});
     });
 });
 
