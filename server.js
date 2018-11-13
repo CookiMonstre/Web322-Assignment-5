@@ -97,7 +97,7 @@ app.get("/employees/add", (req,res) => {
 });
 
 app.get("/images", (req,res) => {
-    //fs.readdir("./public/images/uploaded", function(err, items) {
+    fs.readdir("./public/images/uploaded", function(err, items) {
 			res.render("images", "public/images");//{images:items});
     });
 });
