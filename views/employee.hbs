@@ -24,13 +24,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="email">Email:</label>
-                                    <input class="form-control" id="email" name="email" type="email" />
+                                    <input class="form-control" id="email" name="email" type="email" value="{{ employee.email}}" />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="SSN">Social Security Num:</label>
-                                    <input class="form-control" id="SSN" name="SSN" type="text"  />
+                                    <input class="form-control" id="SSN" name="SSN" type="text"  value="{{ employee.SSN}}"/>
                                 </div>
                             </div>
                         </div>
@@ -38,23 +38,23 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="addressStreet">Address (Street):</label>
-                                    <input class="form-control" id="addressStreet" name="addressStreet" type="text"  />
+                                    <input class="form-control" id="addressStreet" name="addressStreet" type="text"  value="{{ employee.addressStreet}}"/>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <label for="addressCity">Address (City):</label>
-                                <input class="form-control" id="addressCity" name="addressCity" type="text"  />
+                                <input class="form-control" id="addressCity" name="addressCity" type="text" value="{{ employee.addressCity}}" />
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="addressState">Address (State):</label>
-                                    <input class="form-control" id="addressState" name="addressState" type="text"  />
+                                    <input class="form-control" id="addressState" name="addressState" type="text" value="{{ employee.AddressState}}" />
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="addressPostal">Address (Zip Code):</label>
-                                    <input class="form-control" id="addressPostal" name="addressPostal" type="text" />
+                                    <input class="form-control" id="addressPostal" name="addressPostal" type="text" value="{{ employee.addressPostal}}"/>
                                 </div>
                             </div>
                         </div>
@@ -68,20 +68,20 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="isManager">Manager:</label>
-                                    <input class="form-control" type="checkbox" name="isManager" />
+                                    <input class="form-control" type="checkbox" name="isManager" value="{{ employee.isManager}}"/>
                                 </div>
                             </div>
         
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="employeeManagerNum">Employee's Manager Number:</label>
-                                    <input class="form-control" id="employeeManagerNum" name="employeeManagerNum" type="text" />
+                                    <input class="form-control" id="employeeManagerNum" name="employeeManagerNum" type="text" value="{{ employee.employeeManagerNum}}"/>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Status:</label><br />
-                                    <label  class="checkbox-inline">
+                                    <label  class="checkbox-inline" >
                                         <input type="radio" id="statusFT" name="status" value="Full Time" /> Full Time
                                     </label>
                                     <label class="checkbox-inline">
@@ -92,7 +92,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="department">Department</label>
-                                        <select class="form-control" name="department" id="department">
+                                        <select class="form-control" name="department" id="department" >
                                             <option value="1">Creative Services</option>
                                             <option value="2">Product Development</option>
                                             <option value="3">Marketing</option>
@@ -108,7 +108,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="hireDate">Hire Date</label>
-                                    <input class="form-control" id="hireDate" name="hireDate" type="text" />
+                                    <input class="form-control" id="hireDate" name="hireDate" type="text" value="{{ employee.hireDate}}"/>
                                 </div>
                             </div>
                         </div>
