@@ -154,8 +154,7 @@ module.exports.updateEmployee = function(employeeData) {
         if (employeeData.length == 0) {
             reject("query returned 0 results");
         }
-        var tmpSpot = filteredEmployeees.employeeNum.find(employeeData.employeeNum);
-        filteredEmployeees[tmpSpot] = employeeData;
+        filteredEmployeees[(employeeData.employeeNum -1)] = employeeData;
         resolve();
     });
 };
