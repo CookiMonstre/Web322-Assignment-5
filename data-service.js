@@ -151,10 +151,10 @@ module.exports.getDepartments = function(){
 
 module.exports.updateEmployee = function(employeeData) {
     return new Promise(function (resolve, reject) {
-        if (employeeData.length == 0) {
+        if(employeeData.employeeNum == 0) {
             reject("query returned 0 results");
         }
-        filteredEmployeees[(employeeData.employeeNum)] = employeeData;
+        filteredEmployeees[(employeeData.employeeNum - 1)] = employeeData;
         resolve();
     });
 };
