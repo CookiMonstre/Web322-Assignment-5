@@ -15,162 +15,126 @@
 * - ALSO i couldn't get get emplyee by num link to work
 ********************************************************************************/
 
-var express = require("express");
-var path = require("path");
-var data = require("./data-service.js")
-var multer = require("multer")
-var app = express();
-const fs = require('fs');
-const bodyParser = require("body-parser");
-var HTTP_PORT = process.env.PORT || 8080;
+const express = require("express");
+const path = require("path");
+const data = require("./data-service.js");
+const bodyParser = require('body-parser');
+const fs = require("fs");
+const multer = require("multer");
+const app = express();
 
-//Middle Where
+const HTTP_PORT = process.env.PORT || 8080;
 
+// multer requires a few options to be setup to store files with file extensions
+// by default it won't store extensions for security reasons
 const storage = multer.diskStorage({
-  destination: "./public/images/uploaded",
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + path.extname(file.originalname));
-  }
-});
+    destination: "./public/images/uploaded",
+    filename: function (req, file, cb) {
+      // we write the filename as the current date down to the millisecond
+      // in a large web service this would possibly cause a problem if two people
+      // uploaded an image at the exact same time. A better way would be to use GUID's for filenames.
+      // this is a simple example.
+      cb(null, Date.now() + path.extname(file.originalname));
+    }
+  });
+  
+  // tell multer to use the diskStorage function for naming files instead of the default.
+  const upload = multer({ storage: storage });
+
 
 app.use(express.static('public'));
-app.use(bodyParser.urlencoded({ extended: true }) );
+app.use(bodyParser.urlencoded({ extended: true }));
 
-//Upload Variable
-const upload = multer({ storage: storage });
-
-// call this function after the http server starts listening for requests
-function onHttpStart() {
-  console.log("Express http server listening on: " + HTTP_PORT);
-}
-
-//Upload route
-app.post("/images/add", upload.single("imageFile"), (req, res) => {
-  res.redirect("/images");
+app.get("/", (req,res) => {
+    res.sendFile(path.join(__dirname, "/views/home.html"));
 });
 
-// setup a 'route' to listen on the default url path (http://localhost)
-app.get("/", function(req,res){
-   res.sendFile(path.join(__dirname,"/views/home.html"));
+app.get("/about", (req,res) => {
+    res.sendFile(path.join(__dirname, "/views/about.html"));
 });
 
-// setup another route to listen on /about
-app.get("/about", function(req,res){
-  res.sendFile(path.join(__dirname,"/views/about.html"));
+app.get("/images/add", (req,res) => {
+    res.sendFile(path.join(__dirname, "/views/addImage.html"));
 });
 
-app.get("/employees/add", function(req,res){
-  res.sendFile(path.join(__dirname,"/views/addEmployee.html"));
+app.get("/employees/add", (req,res) => {
+    res.sendFile(path.join(__dirname, "/views/addEmployee.html"));
 });
 
-app.get("/images/add", function(req,res){
-  res.sendFile(path.join(__dirname,"/views/addImage.html"));
+app.get("/images", (req,res) => {
+    fs.readdir("./public/images/uploaded", function(err, items) {
+        res.json({images:items});
+    });
 });
 
-//Get images
-app.get("/images",(req,res) =>{
-	data = fs.readdir("./public/images/uploaded", function(err, data) {
-			res.send("image:[" + data + "]"); 
-	});
+app.get("/employees", (req, res) => {
+    if (req.query.status) {
+        data.getEmployeesByStatus(req.query.status).then((data) => {
+            res.json(data);
+        }).catch((err) => {
+            res.json({ message: "no results" });
+        });
+    } else if (req.query.department) {
+        data.getEmployeesByDepartment(req.query.department).then((data) => {
+            res.json(data);
+        }).catch((err) => {
+            res.json({ message: "no results" });
+        });
+    } else if (req.query.manager) {
+        data.getEmployeesByManager(req.query.manager).then((data) => {
+            res.json(data);
+        }).catch((err) => {
+            res.json({ message: "no results" });
+        });
+    } else {
+        data.getAllEmployees().then((data) => {
+            res.json(data);
+        }).catch((err) => {
+            res.json({ message: "no results" });
+        });
+    }
 });
 
-//add employees
-app.post("/employees/add", function (req, res) {
-	data.addEmployee(req.body)
-	res.redirect("/employees")
+app.get("/employee/:empNum", (req, res) => {
+    data.getEmployeeByNum(req.params.empNum).then((data) => {
+        res.json(data);
+    }).catch((err) => {
+        res.json({message:"no results"});
+    });
+});
+
+app.get("/managers", (req,res) => {
+    data.getManagers().then((data)=>{
+        res.json(data);
+    });
+});
+
+app.get("/departments", (req,res) => {
+    data.getDepartments().then((data)=>{
+        res.json(data);
+    });
 });
 
 
-app.get("/employees", function(req,res){
-	data.getAllEmployees()
-	.then(function(data){
-		res.json(data);
-	})
-	.catch(function(reason){
-    res.send(reason);
-	});
+app.post("/employees/add", (req, res) => {
+    data.addEmployee(req.body).then(()=>{
+      res.redirect("/employees");
+    });
+  });
+
+app.post("/images/add", upload.single("imageFile"), (req,res) =>{
+    res.redirect("/images");
 });
 
-app.get("/employees", (req,res)=>{
-	if (req.query.status){
-			dataservice.getEmployeesByStatus(req.query.status) 
-			.then((data)=>{
-					res.json(data);
-			})
-			.catch(()=>{
-				res.send(reason);
-			})
-	}  
-	else if (req.query.department){
-			dataservice.getEmployeesByDepartment(req.query.department)
-			.then((data)=>{
-				res.json(data);
-			})
-			.catch(()=>{
-				res.send(reason);
-			})
-	}   
-	else if (req.query.manager){
-			dataservice.getEmployeesByManager(req.query.manager)
-			.then((data)=>{
-				res.json(data);
-			})
-			.catch(()=>{
-				res.send(reason);
-			})
-	}
-	else{
-			dataservice.getAllEmployees()
-			.then((data)=>{
-				res.json(data);
-			})
-			.catch(()=>{
-				res.send(reason);
-			});
-	}
-})
 
-//unable to get working
-app.get("/employee/value", (req,res)=>{
-	var num = req.params.num;
-	dataservice.getEmployeeByNum(num)
-	.then((data)=>{
-			res.json(data);
-	})
-	.catch(() => {
-		 res.send(reason);
-	})
-});
+app.use((req, res) => {
+    res.status(404).send("Page Not Found");
+  });
 
-app.get("/managers", function(req,res){
-	data.getManagers()
-	.then(function(data){
-    res.json(data);
-	})
-	.catch(function(reason){
-    res.send(reason);
-	});
-});
-
-app.get("/departments", function(req,res){
-	data.getDepartments()
-	.then(function(data){
-    		res.json(data);
-	})
-	.catch(function(reason){
-        res.send(reason);
-	});
-});
-
-app.use(function(req,res){
-  res.send('ERROR #404 Page Not Found');
-});
-
-// setup http server to listen on HTTP_PORT
-data.initialize()
-.then(function(){
-  app.listen(HTTP_PORT, onHttpStart);
-})
-.catch(function(reason){
-  console.log(reason);
+data.initialize().then(function(){
+    app.listen(HTTP_PORT, function(){
+        console.log("app listening on: " + HTTP_PORT)
+    });
+}).catch(function(err){
+    console.log("unable to start server: " + err);
 });
