@@ -66,6 +66,12 @@ const storage = multer.diskStorage({
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(function(req,res,next){
+	let route = req.baseUrl + req.path;
+	app.locals.activeRoute = (route == "/") ? "/" : route.replace(/\/$/, "");
+	next();
+});
+
 app.get("/", (req,res) => {
     //res.sendFile(path.join(__dirname, "/views/home.html"));
 		res.render("home");
