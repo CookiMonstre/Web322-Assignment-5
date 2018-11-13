@@ -132,9 +132,9 @@ app.get("/employees", (req, res) => {
 
 app.get("/employee/:empNum", (req, res) => {
     data.getEmployeeByNum(req.params.empNum).then((data) => {
-        res.json(data);
+			res.render("employee", { employee: data });
     }).catch((err) => {
-        res.json({message:"no results"});
+			res.render("employee",{message:"no results"})
     });
 });
 
