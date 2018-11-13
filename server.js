@@ -30,7 +30,7 @@ const HTTP_PORT = process.env.PORT || 8080;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.engine(".hbs", exphbs({
     extname: ".hbs",
-    defaultLayout: 'layout',
+    defaultLayout: "main",
     helpers: {
         equal: (lvalue, rvalue, options) => {
             if (arguments.length < 3)
