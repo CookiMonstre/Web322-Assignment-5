@@ -4,11 +4,11 @@
         <hr />
    </div> 
 
+    {{#each people}}
     <div class="col-md-4">
-        {{#each people}}
-        <li>
-            <img src="/images/uploaded/"{{this}} class="img-responsive img-thumbnail" />
-        </li>
-        {{/each}}
+    
+        <img src="/images/uploaded/{{this}}" class="img-responsive img-thumbnail" />
+        
     </div>
+    {{/each}}
 </div>
