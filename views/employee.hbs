@@ -68,7 +68,11 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="isManager">Manager:</label>
-                                    <input class="form-control" type="checkbox" name="isManager" value="{{ employee.isManager}}"/>
+                                    {{#if data.isManager}}
+                                    <input class="form-control" type="checkbox" name="isManager" checked/>
+                                    {{else}}
+                                    <input class="form-control" type="checkbox" name="isManager"/>
+                                    {{/if}}
                                 </div>
                             </div>
         
