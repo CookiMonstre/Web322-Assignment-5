@@ -39,7 +39,12 @@ app.engine(".hbs", exphbs({
             } else {
                 return options.fn(this);
             }
-        }
+				},
+				navLink: function(url, options){
+					return '<li' + 
+					((url == app.locals.activeRoute) ? ' class="active" ' : '') + 
+					'><a href="' + url + '">' + options.fn(this) + '</a></li>';
+				}
     }
 }));
 app.set("view engine", ".hbs");
@@ -70,17 +75,6 @@ app.use(function(req,res,next){
 	app.locals.activeRoute = (route == "/") ? "/" : route.replace(/\/$/, "");
 	next();
 });
-
-app.engine('.hbs', exphbs({ 
-	extname: '.hbs',
-	helpers: { 
-		navLink: function(url, options){
-			return '<li' + 
-			((url == app.locals.activeRoute) ? ' class="active" ' : '') + 
-			'><a href="' + url + '">' + options.fn(this) + '</a></li>';
-		}
-	}
-}));
 
 app.get("/", (req,res) => {
     //res.sendFile(path.join(__dirname, "/views/home.html"));
