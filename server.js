@@ -155,6 +155,11 @@ app.post("/images/add", upload.single("imageFile"), (req,res) =>{
     res.redirect("/images");
 });
 
+app.post("/employee/update", (req, res) => {
+	data.updateEmployee(req.body).then(()=>{
+	res.redirect("/employees");
+	});
+});
 
 app.use((req, res) => {
     res.status(404).send("Page Not Found");
