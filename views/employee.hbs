@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-md-12">
+        <h2>{{employee.firstName}} {{ employee.lastName}} - Employee: {{ employee.employeeNum}}</h2>
+        <hr />
+        <form method="post" action="/employee/update">
+            <fieldset>
+                <legend>Personal Information</legend>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="firstName">First Name:</label>
+                            <input class="form-control" id="firstName" name="firstName" type="text" value="{{ employee.firstName}}" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="lastName">Last Name:</label>
+                            <input class="form-control" id="lastName" name="lastName" type="text" value="{{ employee.lastName}}" />
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <hr />
+            <input type="submit" class="btn btn-primary pull-right" value="Update Employee" /><br /><br /><br />
+        </form>
+    </div>
+</div>
