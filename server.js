@@ -72,15 +72,18 @@ app.get("/", (req,res) => {
 });
 
 app.get("/about", (req,res) => {
-    res.sendFile(path.join(__dirname, "/views/about.html"));
+    //res.sendFile(path.join(__dirname, "/views/about.html"));
+		res.render("about");
 });
 
 app.get("/images/add", (req,res) => {
-    res.sendFile(path.join(__dirname, "/views/addImage.html"));
+    //res.sendFile(path.join(__dirname, "/views/addImage.html"));
+		res.render("addImage");
 });
 
 app.get("/employees/add", (req,res) => {
-    res.sendFile(path.join(__dirname, "/views/addEmployee.html"));
+    //res.sendFile(path.join(__dirname, "/views/addEmployee.html"));
+		res.render("addEmployee");
 });
 
 app.get("/images", (req,res) => {
