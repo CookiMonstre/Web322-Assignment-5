@@ -24,7 +24,7 @@
                  {{#each employees}}
                     <tr>
                         <td>{{{employeeNum}}}</td>
-                        <td><a href="/employee/{{employeeNum}}">{{firstName}}&nbsp;{{lastname}}</a></td>
+                        <td><a href="/employee/{{employeeNum}}">{{firstName}}&nbsp;{{Name}}</a></td>
                         <td><a href="mailto:{{email}}">{{email}}</a></td>
                         <td>{{addressStreet}}&nbsp;{{addresCity}}&nbsp;{{addressState}}&nbsp;{{addressPostal}}</td>
                         <td><a href="/employees?manager={{employeeManagerNum}}">{{employeeManagerNum}}</a></td>
