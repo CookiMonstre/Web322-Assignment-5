@@ -91,7 +91,8 @@
                                         </label>
                                     <label class="checkbox-inline">
                                         <input type="radio" id="statusFT" name="status" value="Part Time" /> Part Time
-                                        {{else}}
+                                        {{/equal}}
+                                        {{#equal employee.status "Part Time"}}
                                         <input type="radio" id="statusFT" name="status" value="Full Time" /> Full Time
                                         </label>
                                     <label class="checkbox-inline">
