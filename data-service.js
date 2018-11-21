@@ -32,6 +32,8 @@ var Employee = sequelize.define('Employee', {
     hireDate: Sequelize.STRING,
 });
 
+Department.hasMany(Employee, {foreignKey: 'department'});
+
 //Department
 var Department = sequelize.define('Department', {
     departmentId: {
@@ -47,9 +49,15 @@ var Department = sequelize.define('Department', {
 
 module.exports.initialize = function () {
     return new Promise(function (resolve, reject) {
-        reject();
+        sequelize.sync().then((Employee) => {
+            resolve();
+        }).then((Department) => {
+            resolve();
+        }).catch((err) => {
+            reject("unable to sync the database");
         });
-        
+        reject();
+    });   
 }
 
 module.exports.getAllEmployees = function(){
