@@ -3,12 +3,12 @@
 // Installing "sequelize"
 const Sequelize = require('sequelize');
 
-var sequelize = new Sequelize('danje1mhbk3hao', 'turqcqnvbfsayk', 'c4ec2c9da223231ab7b71e5a3d8de6f16dec88da77844e3e4d8ed952fa58057a', {
-    host: 'ec2-184-73-199-72.compute-1.amazonaws.com', //host
+var sequelize = new Sequelize('d646dgbc7rkoq1', 'odyiuhdpibpcab', 'ac08c1307e864611a65023e3e860a8e5cd78baf08479dc5dda0823209747110a', {
+    host: 'ec2-54-225-196-122.compute-1.amazonaws.com',
     dialect: 'postgres',
     port: 5432,
-    dialectOptions: {
-        ssl: true
+dialectOptions: {
+    ssl: true
     }
 });
 
@@ -288,4 +288,4 @@ module.exports.deleteEmployeeByNum = (empNum) =>{
             reject();
         });
     });
-}
+}               
