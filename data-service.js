@@ -209,3 +209,74 @@ module.exports.updateEmployee = function(employeeData) {
         });
     });
 }
+
+module.exports.addDepartment = function(departmentData) {
+    return new Promise(function(resolve, reject) {
+        sequelize.sync().then(() => {
+            for(let i in departmentData){
+                if(departmentData[i] == "") {
+                    departmentData[i] = null;
+                }
+            }
+            Department.create({
+                departmentId: departmentData.departmentId,
+                departmentName: departmentData.departmentName
+            }).then(() => {
+                resolve(Department);
+            }).catch((err) => {
+                reject("unable to create department");
+            });
+        }).catch(() => {
+            reject("unable to create department");
+        });
+    });
+}
+
+module.exports.updateDepartment = function(departmentData) {
+    return new Promise(function(resolve, reject) {
+        sequelize.sync().then(() => {
+            for(let i in departmentData){
+                if(departmentData[i] == "") {
+                    departmentData[i] = null;
+                }
+            }
+            Department.update({
+                departmentName: departmentData.departmentName
+            }, { where: {
+                departmentId: departmentData.departmentId
+            }}).then(() =>{
+                resolve(Department);
+            }).catch((err) => {
+                reject("unable to update department");
+            });
+        }).catch(() => {
+            reject("unable to update department");
+        });
+    });
+}
+
+module.exports.getDepartmentById = function(id) {
+    return new Promise(function(resolve, reject) {
+        sequelize.sync().then(() => {
+            resolve(Department.findAll({
+                where:{
+                    departmentId: id
+                }}));
+        }).catch((err) => {
+            reject("no results returned");
+        });
+    });
+}
+
+module.exports.deleteDepartmentById = function(id) {
+    return new Promise(function(resolve, reject) {
+        sequelize.sync().then(() => {
+                resolve(Department.destroy({
+                    where:{
+                        employeeNum: empNum
+                    }}));
+        }).catch((err) => {
+            reject();
+        });
+    });
+}
