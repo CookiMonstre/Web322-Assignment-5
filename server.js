@@ -101,25 +101,25 @@ app.get("/images", (req,res) => {
 app.get("/employees", (req, res) => {
     if (req.query.status) {
         data_service.getEmployeesByStatus(req.query.status).then((data) => {
-            res.render("employee", { data: data, title: "Employees" });
+            res.render("employees", { data: data, title: "Employees" });
         }).catch((err) => {
             res.render({ message: "no results" });
                 });
     } else if (req.query.department) {
         data_service.getEmployeesByDepartment(req.query.department).then((data) => {
-            res.render("employee", { data: data, title: "Employees" });
+            res.render("employees", { data: data, title: "Employees" });
         }).catch((err) => {
             res.render({ message: "no results" });
                 });
     } else if (req.query.manager) {
         data_service.getEmployeesByManager(req.query.manager).then((data) => {
-            res.render("employee", { data: data, title: "Employees" });
+            res.render("employees", { data: data, title: "Employees" });
         }).catch((err) => {
             res.render({ message: "no results" });
                 });
     } else {
         data_service.getAllEmployees().then((data) => {
-            res.render("employee", { data: data, title: "Employees" });
+            res.render("employees", { data: data, title: "Employees" });
         }).catch((err) => {
             res.render({ message: "no results" });
         });
@@ -137,8 +137,10 @@ app.get("/employee/:empNum", (req, res) => {
 });
 
 app.get("/departments", (req,res) => {
-    data.getDepartments().then((data)=>{
-			res.render("departments", {departments: data});
+    data_service.getDepartments().then((data) => {
+        res.render("departments", { data: data, title: "Departments" });
+    }).catch((err) => {
+        res.render({ message: "no results" });
     });
 });
 
