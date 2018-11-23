@@ -31,7 +31,9 @@ var Employee = sequelize.define('Employee', {
     employeeManagerNum: Sequelize.INTEGER,
     status: Sequelize.STRING,
     hireDate: Sequelize.STRING,
-    
+    }, {
+        createdAt: false, // disable createdAt
+        updatedAt: false // disable updatedAt
 });
 
 
@@ -44,6 +46,9 @@ var Department = sequelize.define('Department', {
         autoIncrement: true
     }, //Primary Key & Auto Increment 
     departmentName: Sequelize.STRING,
+    }, {
+        createdAt: false, // disable createdAt
+        updatedAt: false // disable updatedAt
 });
 
 Department.hasMany(Employee, {foreignKey: 'department'});
