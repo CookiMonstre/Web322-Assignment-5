@@ -125,14 +125,12 @@ app.get("/employees", (req, res) => {
         });
     }
 });
-            
-    
 
 app.get("/employee/:empNum", (req, res) => {
     data.getEmployeeByNum(req.params.empNum).then((data) => {
-			res.render("employee", { employee: data });
+			res.render("employees", { employee: data });
     }).catch((err) => {
-			res.render("employee",{message:"no results"})
+			res.render("employees",{message:"no results"})
     });
 });
 
