@@ -3,7 +3,8 @@ const Sequelize = require('sequelize');
 var sequelize = new Sequelize('d646dgbc7rkoq1', 'odyiuhdpibpcab', 'ac08c1307e864611a65023e3e860a8e5cd78baf08479dc5dda0823209747110a', {
     host: 'ec2-54-225-196-122.compute-1.amazonaws.com',
     dialect: 'postgres',
-    operatorsAliases: false,
+    operatorsAliases: false, //File Would not start server, this removes a warning message but
+                            //sadly did not start my file.
     port: 5432,
 dialectOptions: {
 ssl: true
