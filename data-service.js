@@ -11,45 +11,43 @@ ssl: true
 
 //define following 2 data models and their relationship employee & department
 //employee 
-var Employee = sequelize.define('Employee', {
-    employeeNum: {
+const Employee = sequelize.define('Employee',{
+    employeeNum:{
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
-        
-    }, //Primary Key & Auto Increment 
+    },
     firstName: Sequelize.STRING,
-    lastName: Sequelize.STRING,
+    last_name: Sequelize.STRING,
     email: Sequelize.STRING,
     SSN: Sequelize.STRING,
     addressStreet: Sequelize.STRING,
-    addressCity: Sequelize.STRING,
+    addresCity: Sequelize.STRING,
     addressState: Sequelize.STRING,
     addressPostal: Sequelize.STRING,
-    maritalStatus: Sequelize.STRING,
+    matritalStatus: Sequelize.STRING,
     isManager: Sequelize.BOOLEAN,
     employeeManagerNum: Sequelize.INTEGER,
     status: Sequelize.STRING,
-    hireDate: Sequelize.STRING,
+    department: Sequelize.INTEGER,
+    hireDate: Sequelize.STRING
     }, {
         createdAt: false, // disable createdAt
         updatedAt: false // disable updatedAt
 });
 
-
-
-//Department
-var Department = sequelize.define('Department', {
-    departmentId: {
+const Department = sequelize.define('Department',{
+    departmentId:{
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
-    }, //Primary Key & Auto Increment 
-    departmentName: Sequelize.STRING,
+    },
+    departmentName: Sequelize.STRING
     }, {
         createdAt: false, // disable createdAt
         updatedAt: false // disable updatedAt
 });
+
 
 Department.hasMany(Employee, {foreignKey: 'department'});
 
