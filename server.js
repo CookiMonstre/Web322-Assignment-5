@@ -128,9 +128,9 @@ app.get("/employees", (req, res) => {
 
 app.get("/employee/:empNum", (req, res) => {
     data.getEmployeeByNum(req.params.empNum).then((data) => {
-			res.render("employees", { employee: data });
+			res.render("employee", { employee: data });
     }).catch((err) => {
-			res.render("employees",{message:"no results"})
+			res.render("employee",{message:"no results"})
     });
 });
 
@@ -155,7 +155,7 @@ app.post("/images/add", upload.single("imageFile"), (req,res) =>{
 
 app.post("/employee/update", (req, res) => {
 	data.updateEmployee(req.body).then(()=>{
-	res.redirect("/employees");
+	res.redirect("/employee");
 	});
 });
 
