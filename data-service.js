@@ -46,7 +46,7 @@ var Department = sequelize.define('Department', {
     departmentName: Sequelize.STRING,
 });
 
-//Department.hasMany(Employee, {foreignKey: 'department'});
+Department.hasMany(Employee, {foreignKey: 'department'});
 
 
 
