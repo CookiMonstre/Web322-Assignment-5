@@ -100,31 +100,33 @@ app.get("/images", (req,res) => {
 
 app.get("/employees", (req, res) => {
     if (req.query.status) {
-        data.getEmployeesByStatus(req.query.status).then((data) => {
-					res.render("employees", {employees: data});
+        data_service.getEmployeesByStatus(req.query.status).then((data) => {
+            res.render("employee", { data: data, title: "Employees" });
         }).catch((err) => {
             res.render({ message: "no results" });
-        });
+                });
     } else if (req.query.department) {
-        data.getEmployeesByDepartment(req.query.department).then((data) => {
-					res.render("employees", {employees: data});
+        data_service.getEmployeesByDepartment(req.query.department).then((data) => {
+            res.render("employee", { data: data, title: "Employees" });
         }).catch((err) => {
             res.render({ message: "no results" });
-        });
+                });
     } else if (req.query.manager) {
-        data.getEmployeesByManager(req.query.manager).then((data) => {
-					res.render("employees", {employees: data});
+        data_service.getEmployeesByManager(req.query.manager).then((data) => {
+            res.render("employee", { data: data, title: "Employees" });
         }).catch((err) => {
             res.render({ message: "no results" });
-        });
+                });
     } else {
-        data.getAllEmployees().then((data) => {
-					res.render("employees", {employees: data});
+        data_service.getAllEmployees().then((data) => {
+            res.render("employee", { data: data, title: "Employees" });
         }).catch((err) => {
             res.render({ message: "no results" });
         });
     }
 });
+            
+    
 
 app.get("/employee/:empNum", (req, res) => {
     data.getEmployeeByNum(req.params.empNum).then((data) => {
