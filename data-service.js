@@ -16,6 +16,7 @@ var Employee = sequelize.define('Employee', {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
+        
     }, //Primary Key & Auto Increment 
     firstName: Sequelize.STRING,
     lastName: Sequelize.STRING,
@@ -30,9 +31,10 @@ var Employee = sequelize.define('Employee', {
     employeeManagerNum: Sequelize.INTEGER,
     status: Sequelize.STRING,
     hireDate: Sequelize.STRING,
+    
 });
 
-Department.hasMany(Employee, {foreignKey: 'department'});
+
 
 //Department
 var Department = sequelize.define('Department', {
@@ -44,6 +46,7 @@ var Department = sequelize.define('Department', {
     departmentName: Sequelize.STRING,
 });
 
+Department.hasMany(Employee, {foreignKey: 'department'});
 
 
 
