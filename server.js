@@ -15,6 +15,8 @@
 *                       wednsday lab. I have attempted to impliment everything else
 *                       base on the word doc and sample website but it is near
 *                       impossible when the site does not run local.
+* PS: Error occured after updating data service to create the sequilize server
+*     Conection and tables.
 ********************************************************************************/
 
 const express = require("express");
