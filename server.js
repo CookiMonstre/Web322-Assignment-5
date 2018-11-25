@@ -146,7 +146,7 @@ app.get("/employee/:empNum", (req, res) => {
             viewData.employee = null; // set employee to null if none were returned
         }
     }).catch(() => {
-        viewData.employee = null; // set employee to null if there was an error 
+        viewData.employee = null; // set employee to null if there was an error
     }).then(dataService.getDepartments).then((data) => {
         viewData.departments = data; // store department data in the "viewData" object as "departments"
 
@@ -198,7 +198,9 @@ app.post("/images/add", upload.single("imageFile"), (req,res) =>{
 app.post("/employee/update", (req, res) => {
 	data.updateEmployee(req.body).then(()=>{
 	res.redirect("/employee");
-	});
+	}).catch((err)=>{
+        res.status(500).send("Unable to Update Employee");
+        
 });
 
 app.use((req, res) => {
@@ -221,13 +223,17 @@ app.get("/departments/add", (req,res) => {
 app.post("/departments/add", (req, res) => {
     data.addDepartment(req.body).then(()=>{
       res.redirect("/departments");
-    });
+    }).catch((err)=>{
+        res.status(500).send("Unable to Update Employee");
+        
   });
 
   app.post("/department/update", (req, res) => {
 	data.updateDepartment(req.body).then(()=>{
 	res.redirect("/departments");
-	});
+	}).catch((err)=>{
+        res.status(500).send("Unable to Update Employee");
+        
 });
 
 app.get("/department/:departmentId", (req, res) => {
