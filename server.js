@@ -4,11 +4,17 @@
 * of this assignment has been copied manually or electronically from any other source
 * (including 3rd party web sites) or distributed to other students.
 *
-* Name: Jacob Van Halteren Student ID: 111769170 Date: November 10th 2018
+* Name: Jacob Van Halteren Student ID: 111769170 Date: November 25th 2018
 *
-* Online (Heroku) Link: 
-* - PLEASE NOTE
-* - Update Employee not implimented properly - IN DATA-SERVICE
+* Online (Heroku) Link: Cannot Debug because cannot get it to run. Emailed you
+*                       mid afternoon friday. Server gives an "undifined" error
+*                       message, so it was literally impossible for me to debug
+*                       So i spent 4 hrs attempting to remidy the issue and
+*                       Nothing worked. Hense I have not put the app on Heroku
+*                       As it does not run localy. I will be asking for help in
+*                       wednsday lab. I have attempted to impliment everything else
+*                       base on the word doc and sample website but it is near
+*                       impossible when the site does not run local.
 ********************************************************************************/
 
 const express = require("express");
