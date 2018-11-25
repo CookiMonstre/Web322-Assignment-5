@@ -20,8 +20,8 @@
                     {{#each departments}}
                         <tr>
                             <td><a href="/employees?department={{departmentId}}"> {{departmentId}} </a></td>
-                            <td><a href="/employees?department={{departmentId}}"> {{departmentName}} </a> </td>
-                        </tr>
+                            <td><a href="/department/{{departmentId}}">{{departmentName}}</a></td>                        </tr>
+                            <input type="submit" class="btnbtn-danger" value="Remove" /><br /><br /><br />
                     {{/each}}
                 </tbody>
             </table>

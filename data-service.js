@@ -280,3 +280,16 @@ module.exports.deleteDepartmentById = function(id) {
         });
     });
 }
+//Like department destory funct
+module.exports.deleteEmployeeById = function(id) {
+    return new Promise(function(resolve, reject) {
+        sequelize.sync().then(() => {
+                resolve(Employee.destroy({
+                    where:{
+                        employeeNum: empNum
+                    }}));
+        }).catch((err) => {
+            reject();
+        });
+    });
+}
