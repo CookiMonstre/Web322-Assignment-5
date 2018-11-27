@@ -233,14 +233,14 @@ app.use((req, res) => {
   });
 
 
-
+/*
 data.initialize().then(function(){
     app.listen(HTTP_PORT, function(){
         console.log("app listening on: " + HTTP_PORT)
     });
 }).catch(function(err){
     console.log("unable to start server: " + err);
-});
+});*/
 
 app.get("/departments/add", (req,res) => {
     //res.sendFile(path.join(__dirname, "/views/addEmployee.html"));
