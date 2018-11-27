@@ -96,7 +96,7 @@ app.get("/", (req,res) => {
 		res.render("home");
 });
 
-/*
+
 
 app.get("/about", (req,res) => {
     //res.sendFile(path.join(__dirname, "/views/about.html"));
@@ -155,7 +155,7 @@ app.get("/employees", (req, res) => {
     });
 });*/
 
-/*
+
 
 app.get("/employee/:empNum", (req, res) => {
 
@@ -226,13 +226,13 @@ app.post("/employee/update", (req, res) => {
     });
 });
 
-*/
+
 
 app.use((req, res) => {
     res.status(404).send("Page Not Found");
   });
 
-/*
+
 
 data.initialize().then(function(){
     app.listen(HTTP_PORT, function(){
@@ -294,4 +294,3 @@ app.post("/employees/add", (req, res) => {
         console.log(err);
     });
 });
-*/
