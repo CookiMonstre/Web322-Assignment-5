@@ -30,6 +30,17 @@ const exphbs = require('express-handlebars');
 
 const HTTP_PORT = process.env.PORT || 8080;
 
+function onHttpStart() {
+    console.log("Express http server listening on: " + HTTP_PORT);
+    return new Promise((res, req) => {
+        data_service.initialize().then((data) => {
+            console.log(data)
+        }).catch((err) => {
+            console.log(err);
+        });
+    });
+}
+
 //USE app.engine
 app.engine(".hbs", exphbs({
     extname: ".hbs",
@@ -221,7 +232,7 @@ app.use((req, res) => {
     res.status(404).send("Page Not Found");
   });
 
-
+/*
 
 data.initialize().then(function(){
     app.listen(HTTP_PORT, function(){
@@ -230,8 +241,6 @@ data.initialize().then(function(){
 }).catch(function(err){
     console.log("unable to start server: " + err);
 });
-
-/*
 
 app.get("/departments/add", (req,res) => {
     //res.sendFile(path.join(__dirname, "/views/addEmployee.html"));
